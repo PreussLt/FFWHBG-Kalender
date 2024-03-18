@@ -1,0 +1,36 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+#ffw {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#ffw td, #ffw th {
+    border: 0px solid #cd1719;
+    padding: 8px;
+}
+
+#ffw tr:nth-child(even){background-color: #f2f2f2;}
+
+#ffw tr:hover {background-color: #ddd;}
+
+#ffw td{
+    font-size: 18px;
+}
+
+#ffw th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #cd1719;
+    color: #ffe800;
+    font-size: 25px;
+
+}
+
+#ffwlast{
+    border-right: 2px solid black;
+}
