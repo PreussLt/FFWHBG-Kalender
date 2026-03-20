@@ -1,0 +1,9 @@
+{
+  "name": "ffwhbg-kalender",
+  "version": "1.0.0",
+  "description": "Calendar service for FF Herrenberg",
+  "main": "reload.js",
+  "dependencies": {
+    "node-ical": "^0.18.0"
+  }
+}

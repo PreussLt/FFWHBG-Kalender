@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: ffwhbg-kalender
+    ports:
+      - "8112:80"
+    volumes:
+      - .:/var/www/html
+      - ical_data:/var/www/html/ical
+    restart: always
+
+volumes:
+  ical_data:
