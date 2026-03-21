@@ -13,16 +13,17 @@ $gruppe2 = [];
 $gruppe3 = [];
 $gruppe4 = [];
 $gesamt = [];
+$hbg = [];
 
 // Die JSON auslesen:
 $data = getDataFromJson($filename, $calurl);
 
 // Arrays aus der Data holen,
-getArrays($data, $gruppe1, "Übung Gruppe 1", $gruppe2, "Übung Gruppe 2", $gruppe3, "Übung Gruppe 3", $gruppe4, "Übung Gruppe 4", $gesamt);
+getArrays($data, $gruppe1, "XYZ", $gruppe2, "XYZ", $gruppe3, "XYZ", $gruppe4, "XYZ", $hbg);
 
 //Weiteren Kalender zur URL hinzufügen
 addCalender("./ical/ffw.json", "https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-BJzrvdoQS8ospFjntN9UZ300pscvGBrW/cal.ics", $gesamt);
 
 // Ausgabe der Dateien in eine Gruppe:
-showTable($gruppe1, "Gruppe 1", $gruppe2, "Gruppe 2", $gruppe3, "Gruppe 3", $gruppe3, "Gruppe 4", $gesamt, "Gesamt");
+showTable($hbg, "Abt. Herrenerg", $gruppe2, "0", $gruppe3, "0", $gruppe3, "0", $gesamt, "Gesamt");
 ?>
