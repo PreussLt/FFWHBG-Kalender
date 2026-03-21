@@ -5,7 +5,7 @@
 <?php
 // Hier die Coustom Data Eintragen
 $filename = "./ical/hbg.json";
-$calurl ="https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-EwOi3xwxB57Tr7OvWoDrgbaBaNtZpSUv/cal.ics";
+$calurl = "https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-EwOi3xwxB57Tr7OvWoDrgbaBaNtZpSUv/cal.ics";
 
 //Anlegen der Gruppe
 $gruppe1 = [];
@@ -15,14 +15,14 @@ $gruppe4 = [];
 $gesamt = [];
 
 // Die JSON auslesen:
-$data = getDataFromJson($filename,$calurl);
+$data = getDataFromJson($filename, $calurl);
 
 // Arrays aus der Data holen,
-getArrays($data,$gruppe1,"Gr. 1 -",$gruppe2,"Gr. 2 -",$gruppe3,"Gr. 3 -",$gruppe4,"Gr. 4 -",$gesamt);
+getArrays($data, $gruppe1, "Übung Gruppe 1", $gruppe2, "Gr. 2 -", $gruppe3, "Gr. 3 -", $gruppe4, "Gr. 4 -", $gesamt);
 
 //Weiteren Kalender zur URL hinzufügen
-addCalender("./ical/ffw.json","https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-BJzrvdoQS8ospFjntN9UZ300pscvGBrW/cal.ics",$gesamt);
+addCalender("./ical/ffw.json", "https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-BJzrvdoQS8ospFjntN9UZ300pscvGBrW/cal.ics", $gesamt);
 
 // Ausgabe der Dateien in eine Gruppe:
-showTable($gruppe1,"Gruppe 1",$gruppe2,"Gruppe 2",$gruppe3,"Gruppe 3",$gruppe3,"Gruppe 4",$gesamt,"Gesamt");
+showTable($gruppe1, "Gruppe 1", $gruppe2, "Gruppe 2", $gruppe3, "Gruppe 3", $gruppe3, "Gruppe 4", $gesamt, "Gesamt");
 ?>
