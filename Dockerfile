@@ -11,16 +11,16 @@ RUN apt-get update && apt-get install -y \
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy application files
-COPY . .
+# Copy application files and set ownership
+COPY --chown=www-data:www-data . .
 
-# Install Node.js dependencies
+# Install Node.js dependencies as root (to have permissions for global npm cache)
 RUN npm install
 
-# Create ical directory if it doesn't exist and set permissions
-RUN mkdir -p ical && chown -R www-data:www-data ical
+# Ensure permissions after npm install
+RUN chown -R www-data:www-data /var/www/html
 
-# Enable Apache mod_rewrite (optional but recommended)
+# Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
 # Expose port 80

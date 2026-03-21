@@ -8,8 +8,5 @@ services:
       - "8112:80"
     volumes:
       - .:/var/www/html
-      - ical_data:/var/www/html/ical
+      - /var/www/html/node_modules
     restart: always
-
-volumes:
-  ical_data:
