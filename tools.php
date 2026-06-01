@@ -109,7 +109,7 @@ function showTable($group1,$nameCell1,$group2,$nameCell2,$group3,$nameCell3,$gro
     echo "</table>";
 
 }
-function getArrays($data, &$gruppe1,$searchstring1, &$gruppe2,$searchstring2, &$gruppe3,$searchstring3,&$gruppe4,$searchstring4, &$gesamt, &$bugsArray = null)
+function getArrays($data, &$gruppe1,$searchstring1, &$gruppe2,$searchstring2, &$gruppe3,$searchstring3,&$gruppe4,$searchstring4, &$gesamt)
 {
     $now = time();
     $showPast = isset($_GET['history']);
@@ -122,12 +122,6 @@ function getArrays($data, &$gruppe1,$searchstring1, &$gruppe2,$searchstring2, &$
 
             // Überprüfen, ob summary vorhanden ist
             if (isset($value['summary'])) {
-                // Bug Erkennung
-                if ($bugsArray !== null && (stripos($value['summary'], 'Bug') !== false || stripos($value['summary'], 'Defekt') !== false)) {
-                    $bugsArray[] = ['summary' => $value['summary'], 'start' => $value['start']];
-                    continue;
-                }
-
                 $summaryText = explode("-", $value['summary'], 2); // Teilt die summary am "-" Zeichen
                 $trimmedSummaryText = isset($summaryText[1]) ? trim($summaryText[1]) : '';
 
@@ -155,7 +149,7 @@ function getDataFromJson($filename,$calurl)
 
 }
 
-function addCalender($filename,$calurl,&$array, &$bugsArray = null)
+function addCalender($filename,$calurl,&$array)
 {
     $tmpData = getDataFromJson($filename,$calurl);
     $now = time();
@@ -170,27 +164,10 @@ function addCalender($filename,$calurl,&$array, &$bugsArray = null)
 
             // Überprüfen, ob summary vorhanden ist
             if (isset($value['summary'])) {
-                // Bug Erkennung
-                if ($bugsArray !== null && (stripos($value['summary'], 'Bug') !== false || stripos($value['summary'], 'Defekt') !== false)) {
-                    $bugsArray[] = ['summary' => $value['summary'], 'start' => $value['start']];
-                } else {
-                    $array[] = ['summary' => $value['summary'], 'start' => $value['start']];
-                }
+                $array[] = ['summary' => $value['summary'], 'start' => $value['start']];
+
             }
         }
 
     }
-}
-
-function showBugList($bugs) {
-    if (empty($bugs)) {
-        echo "<p>Keine offenen Bugs gefunden.</p>";
-        return;
-    }
-    echo "<h3>Offene Bugs / Defekte</h3>";
-    echo "<ul>";
-    foreach ($bugs as $bug) {
-        echo "<li><strong>" . date('d.m.Y', strtotime($bug['start'])) . ":</strong> " . htmlspecialchars($bug['summary']) . "</li>";
-    }
-    echo "</ul>";
 }
