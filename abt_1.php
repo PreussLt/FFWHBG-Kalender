@@ -27,5 +27,5 @@ addCalender("./ical/iuk.json", "https://calsync.alamos-gmbh.com/calendar/ical/te
 addCalender("./ical/juf.json", "https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-j3iccbU8NXO7609IzZCNgHEJVy5z4WHI/cal.ics", $gesamt);
 
 // Ausgabe der Dateien in eine Gruppe:
-showTable($hbg, "Abt. Herrenerg", $gruppe2, "0", $gruppe3, "0", $gruppe3, "0", $gesamt, "Gesamt");
+showTable($hbg, "Abt. Stadtmitte", $gruppe2, "0", $gruppe3, "0", $gruppe3, "0", $gesamt, "Gesamt");
 ?>
