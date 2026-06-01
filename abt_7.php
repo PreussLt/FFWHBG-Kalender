@@ -16,13 +16,20 @@ $gesamt = [];
 
 // Die JSON auslesen:
 $data = getDataFromJson($filename,$calurl);
+
+// Bug Array anlegen
+$bugs = [];
+
 // Arrays aus der Data holen,
-getArrays($data,$gruppe1,"Gr. 1 -",$gruppe2,"Gr. 2 -",$gruppe3,"Gr. 3 -",$gruppe3,"Gr. 4 - ",$gesamt);
+getArrays($data,$gruppe1,"Gr. 1 -",$gruppe2,"Gr. 2 -",$gruppe3,"Gr. 3 -",$gruppe3,"Gr. 4 - ",$gesamt, $bugs);
 
 //Weiteren Kalender zur URL hinzufügen
-addCalender("./ical/ffw.json","https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-BJzrvdoQS8ospFjntN9UZ300pscvGBrW/cal.ics",$gesamt);
-addCalender("./ical/laz.json","https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-kk8zgJUYegpzDfwTmS57MI0EycIiMy0m/cal.ics",$gesamt);
-addCalender("./ical/ffw.json","https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-v6ejoET3mLE2ofKIvKJ1QYTDLKL04EUe/cal.ics",$gesamt);
+addCalender("./ical/ffw.json","https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-BJzrvdoQS8ospFjntN9UZ300pscvGBrW/cal.ics",$gesamt, $bugs);
+addCalender("./ical/laz.json","https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-kk8zgJUYegpzDfwTmS57MI0EycIiMy0m/cal.ics",$gesamt, $bugs);
+addCalender("./ical/ffw.json","https://calsync.alamos-gmbh.com/calendar/ical/technik%40leitstelle-boeblingen.de/public-v6ejoET3mLE2ofKIvKJ1QYTDLKL04EUe/cal.ics",$gesamt, $bugs);
 // Ausgabe der Dateien in eine Gruppe:
 showTable($gruppe1,"Gruppe 1",$gruppe2,"Gruppe 2",$gruppe3,"Gruppe 3",$gruppe3,"0",$gesamt,"Gesamt");
+
+// Bug Liste anzeigen
+showBugList($bugs);
 ?>
